@@ -10,23 +10,13 @@ pipeline {
     stage('Deploy to QA') {
       steps {
         echo 'DeploytoQASuccess'
+        git(url: 'https://github.com/pravinkumarm/ACMEBuild', branch: 'master', poll: true)
       }
     }
 
-    stage('SmokeTest') {
-      parallel {
-        stage('SmokeTest') {
-          steps {
-            echo 'SmokeSuccess'
-          }
-        }
-
-        stage('Performance') {
-          steps {
-            echo 'PerformanceSuccess'
-          }
-        }
-
+    stage('Deploy') {
+      steps {
+        echo 'Deploy success'
       }
     }
 
